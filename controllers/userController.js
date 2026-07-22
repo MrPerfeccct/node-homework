@@ -3,7 +3,7 @@ const register = (req, res) => {
 
   const user = { id: Date.now(), name, email, password };
   global.users.push(user);
-  global.user_id = user.id;
+  global.user_id = user;
 
   res.status(201).json({ name: user.name, email: user.email });
 };
@@ -19,7 +19,7 @@ const logon = (req, res) => {
     return res.status(401).json({ message: "Invalid credentials" });
   }
 
-  global.user_id = user.id;
+  global.user_id = user;
   res.status(200).json({ name: user.name, email: user.email });
 };
 
